@@ -6,13 +6,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm start --prefix client",
+    "server": "nodemon index.js",
     "start-mongo": "docker run -d -v mdb-data:/data/db -p 27017:27017 --name mymongo-quiz-app mongo",
-    "stop-mongo": "docker stop mymongo-quiz-app && docker container rm mymongo-quiz-app"
+    "stop-mongo": "docker stop mymongo-quiz-app && docker container rm mymongo-quiz-app",
+    "dev": "concurrently  \"npm run client\" \"npm run start-mongo\" \"npm run server\" "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^6.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.12.13",
     "nodemon": "^2.0.7"
