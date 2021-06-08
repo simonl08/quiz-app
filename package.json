@@ -3,11 +3,11 @@
   "type": "module",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm start --prefix client",
-    "server": "nodemon index.js",
+    "server": "nodemon server.js",
     "start-mongo": "docker run -d -v mdb-data:/data/db -p 27017:27017 --name mymongo-quiz-app mongo",
     "stop-mongo": "docker stop mymongo-quiz-app && docker container rm mymongo-quiz-app",
     "dev": "concurrently  \"npm run client\" \"npm run start-mongo\" \"npm run server\" "
