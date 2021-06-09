@@ -1,8 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
-import registerRouter from "./routes/register"
-import loginRouter from "./routes/login"
 
+import users from "./routes/users.js"
 
 mongoose.connect("mongodb://localhost:27017/", {
     useNewUrlParser: true,
@@ -19,9 +18,8 @@ const app = express();
 
 app.use(express.json());
 
-app.use('/', registerRouter);
-app.use('/', loginRouter);
+app.use('/users', users);
 
-app.listen(3000, () => {
+app.listen(5000, () => {
     console.log("Server online");
 });
