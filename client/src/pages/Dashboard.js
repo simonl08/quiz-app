@@ -1,9 +1,20 @@
-import React from 'react'
-import {PageContainer, DashboardContainer, LeaderboardContainer, AnswerContainer, ContainerHeader, ButtonsQuiz, PlayerScoreContainer ,PlayerScore} from "../styles/globalStyles"
+import React from "react";
+import {
+    PageContainer,
+    DashboardContainer,
+    LeaderboardContainer,
+    AnswerContainer,
+    ContainerHeader,
+    ButtonsQuiz,
+    PlayerScoreContainer,
+    PlayerScore,
+    Navbar,
+} from "../styles/globalStyles";
 
 export default function Dashboard() {
     return (
         <PageContainer>
+            <Navbar>QZapp</Navbar>
             <DashboardContainer>
                 <ContainerHeader>Question: 1</ContainerHeader>
                 <p>sample question here</p>
@@ -17,10 +28,10 @@ export default function Dashboard() {
 
             <LeaderboardContainer>
                 <ContainerHeader>Leaderboard</ContainerHeader>
-                    <PlayerScoreContainer>
-                        <PlayerScore>Player 1</PlayerScore>
-                    </PlayerScoreContainer>
+                <PlayerScoreContainer>
+                    <PlayerScore>Player 1</PlayerScore>
+                </PlayerScoreContainer>
             </LeaderboardContainer>
         </PageContainer>
-    )
+    );
 }
