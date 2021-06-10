@@ -20,7 +20,7 @@ background-color: grey;
 
 // ====================== Dashboard page ======================
 
-//nav or banner placeholder
+//nav placeholder
 export const Navbar = styled.nav`
     background-color: purple;
     height: 60px;
@@ -53,7 +53,6 @@ background-color: #4f0a5e;
 display: flex;
 flex-direction: column;
 justify-content: center;
-flex-wrap: wrap;
 text-align: center;
 height: 40px;
 width: 100%;
@@ -91,7 +90,7 @@ export const LeaderboardContainer = styled.div`
     width: 30vw;
     background-color: purple;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
     margin-left: 20px;
     margin-top: 50px;
     border-radius: 20px;
@@ -99,4 +98,28 @@ export const LeaderboardContainer = styled.div`
     box-shadow: 0px 0px 5px #888888
 `;
 
+export const PlayerScoreContainer = styled.div`
+    height: 85%;
+    width: 100%;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 20px;
+    margin: 0 15px;
+    margin-bottom: 10px;
+    color: white;
+`;
+
+export const PlayerScore = styled.div`
+    height: 20px;
+    width: 90%;
+    background-color: white;
+    color: black;
+    margin: 10px;
+    border-radius: 20px;
+    padding-left: 10px;
+`;
 

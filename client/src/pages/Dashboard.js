@@ -1,10 +1,9 @@
 import React from 'react'
-import {PageContainer, Navbar, DashboardContainer, LeaderboardContainer, AnswerContainer, ContainerHeader, ButtonsQuiz, Questions} from "../styles/globalStyles"
+import {PageContainer, DashboardContainer, LeaderboardContainer, AnswerContainer, ContainerHeader, ButtonsQuiz, PlayerScoreContainer ,PlayerScore} from "../styles/globalStyles"
 
 export default function Dashboard() {
     return (
         <PageContainer>
-            <Navbar>Quiz</Navbar>
             <DashboardContainer>
                 <ContainerHeader>Question: 1</ContainerHeader>
                 <p>sample question here</p>
@@ -15,8 +14,12 @@ export default function Dashboard() {
                     <ButtonsQuiz>answer 4</ButtonsQuiz>
                 </AnswerContainer>
             </DashboardContainer>
+
             <LeaderboardContainer>
                 <ContainerHeader>Leaderboard</ContainerHeader>
+                    <PlayerScoreContainer>
+                        <PlayerScore>Player 1</PlayerScore>
+                    </PlayerScoreContainer>
             </LeaderboardContainer>
         </PageContainer>
     )
