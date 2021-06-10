@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from "react";
+import ApiData from './api/ApiData'
 // import Register from "./Components/register.js"
 // import Login from "./Components/login.js";
 import {Navbar} from "./styles/globalStyles"
@@ -11,6 +12,7 @@ const App = () => {
   return (
     <Router>
       <Navbar>Quiz</Navbar>
+      < ApiData />
       <Switch>
         <Route path="/" exact component={Home}/>
         <Route path="/dashboard" component={Dashboard}/>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import QuizDisplay from './QuizDisplay'
 import axios from "axios";
 import "../App.css";
 
@@ -13,9 +14,10 @@ const ApiData = () => {
     if (data) {
       decoded(data);
     }
-    console.log("memory leak");
+    // console.log("memory leak");
   }, [data]);
 
+ 
   // <------------- variable to store api URL ------------------->
   const apiUrl = `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=medium&type=multiple&encode=url3986`;
 
@@ -47,7 +49,7 @@ const ApiData = () => {
   // <------- decoded answers ------------------>>>>>
   let answers = [];
   let decoded = (data) => {
-    console.log(data);
+   
     data.map((item) => {
       let itemAnswers = {
         question: decodeURIComponent(item.question),
@@ -56,12 +58,15 @@ const ApiData = () => {
           return decodeURIComponent(answer);
         }),
       };
-      console.log(itemAnswers);
-      answers.push(itemAnswers);
 
+      // console.log(itemAnswers);
+      answers.push(itemAnswers);
       return setQuiz(answers);
     });
+    console.log(quiz)
   };
+
+
 
   return (
     <div>
@@ -80,15 +85,16 @@ const ApiData = () => {
         <button type="submit"> Select Category</button>
       </form>
 
+
       {/* show the questions the user has chosen */}
-      {/* {quiz && quiz.map((question, i) => {
+      {quiz && quiz.map((question,idx) => {
       return (
-        <div> 
-          <h1>{question}</h1>
-        </div>
+ 
+         <QuizDisplay key={idx} question={question} idx={idx} />
+     
       )  
     
-})} */}
+})}
     </div>
   );
 };
