@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import QuizDisplay from './QuizDisplay'
+// import QuizDisplay from './QuizDisplay'
+import QuizDisplayTwo from './QuizDisplayTwo'
 import axios from "axios";
 import "../App.css";
 
@@ -86,17 +87,17 @@ const ApiData = () => {
         <button type="submit"> Select Category</button>
       </form>
 
-
+<QuizDisplayTwo quiz={quiz} /> 
       {/* show the questions the user has chosen */}
-      {quiz && quiz.map((question,idx) => {
+      {/* {quiz && quiz.map((question,idx) => {
         
       return (
- 
-         <QuizDisplay key={idx} question={question} idx={idx}  />
+  <QuizDisplay key={idx} question={question} idx={idx}  />
+        
      
       )  
     
-})}
+})} */}
     </div>
   );
 };

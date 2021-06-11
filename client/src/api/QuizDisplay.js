@@ -3,41 +3,50 @@ import React, {useEffect, useState} from "react";
 
 const QuizDisplay = (props) => {
 // const [displayOnLoad, setDisplayOnLoad] = useState([ ])
-const [views, setViews] = useState()
-const [buttonDisabled, setButtonDisabled] = useState("false")
-const [visibility, setVisibility] = useState("hidden")
+const [views, setViews] = useState(0)
+const [display, setDisplay] = useState(null)
+// const [buttonDisabled, setButtonDisabled] = useState("true")
+// const [visibility, setVisibility] = useState("hidden")
 
 useEffect(() =>{
-  
-    if(props.idx === 0){
-        console.log(props.question)
-        setViews(0)
-       }
+   if(views ){
+       console.log(props.idx)
+       setViews(0)
+        // setDisplay(props.idx)
+        // console.log(display)
+        setViews("")
+   }
 },[] )
 
-// const handleSubmit = ()  => 
+let handleClick =  ()  => {
+
+    setViews(prevDisplay => prevDisplay + 1 )
+
+}
 
 // console.log()
 
   return (
     <div>
+         {views}
     {
-    props.idx === views ?
+    props.idx === views || display  ?
     <div>
     <h1>{props.question.question}</h1>   
-
+       
     <p>{props.question.correctAnswer}</p>
     <p>{props.question.incorrectAnswer[0]}</p>
     <p>{props.question.incorrectAnswer[1]}</p>
     <p>{props.question.incorrectAnswer[2]}</p>
 
-    <button visibility="hidden" disabled={buttonDisabled}>Next Question</button>
+    <button disabled={""} onClick={handleClick} >Next Question</button>
     </div>
+ 
     : 
     " "
 
     }
-    {}
+    
 
      
      
