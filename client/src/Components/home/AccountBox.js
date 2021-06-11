@@ -83,7 +83,7 @@ const expandingTransition = {
     stiffness: 30,
 };
 
-export default function AccountBox() {
+export default function AccountBox({ setUser }) {
     const [isExpanded, setIsExpanded] = useState(false);
     const [active, setActive] = useState("signin");
     const playExpandAnimation = () => {
@@ -131,8 +131,10 @@ export default function AccountBox() {
                 )}
             </TopContainer>
             <InnerContainer>
-                {active === "signin" && <LoginForm switch={switchToSignup} />}
-                {active === "signup" && <SignUpForm switch={switchToSignin} />}
+                {active === "signin" && (
+                    <LoginForm switchAnimation={switchToSignup} setUser={setUser} />
+                )}
+                {active === "signup" && <SignUpForm switchAnimation={switchToSignin} />}
             </InnerContainer>
         </StyledAccountBox>
     );

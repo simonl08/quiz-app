@@ -1,23 +1,5 @@
 import styled from "styled-components";
 
-export const PageContainer = styled.div`
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    form {
-        height: 50vh;
-        width: 50vw;
-        border-radius: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        background-color: grey;
-    }
-`;
-
 // ====================== Home page ======================
 export const StyledFormContainer = styled.div`
     width: 100%;
@@ -36,8 +18,10 @@ export const MutedLink = styled.a`
     font-size: 11px;
     color: rgba(200, 200, 200, 0.9);
     margin-top: 20px;
+    display: flex;
 `;
-export const BoldLink = styled.a`
+export const BoldText = styled.p`
+    margin-left: 10px;
     font-size: 12px;
     color: #ffd759;
 `;
@@ -67,6 +51,7 @@ export const StyledInput = styled.input`
     }
 `;
 export const StyledButton = styled.button`
+    align-self: center;
     width: 60%;
     outline: none;
     padding: 15px 0;
@@ -90,30 +75,54 @@ export const StyledButton = styled.button`
 `;
 
 // ====================== Dashboard page ======================
-
-//nav placeholder
-export const Navbar = styled.nav`
-    background-color: purple;
-    height: 60px;
+export const PageContainer = styled.div`
+    height: 100vh;
     width: 100vw;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    background-size: cover;
+`;
+export const Navbar = styled.nav`
+    background-color: ${(props) => props.theme.teal};
+    height: 80px;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     font-size: 1.2rem;
-    position: absolute;
+    position: fixed;
+    padding: 0 5vw;
     top: 0;
-    z-index: 999;
+    z-index: 10;
     color: white;
+    h1 {
+        font-size: 32px;
+    }
+    .user-details {
+        width: 250px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .logout-btn {
+            padding: 8px 20px;
+            border: 2px solid white;
+            background: transparent;
+            border-radius: 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+    }
 `;
 export const DashboardContainer = styled.div`
-    height: 80vh;
+    height: 75vh;
     width: 60vw;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 50px;
     color: white;
-    background-color: purple;
+    background-color: rgba(5, 84, 84, 0.7);
     border-radius: 20px;
     box-shadow: 0px 0px 5px #888888;
 `;
@@ -131,7 +140,7 @@ export const ContainerHeader = styled.h1`
 `;
 export const AnswerContainer = styled.div`
     width: 100%;
-    height: 350px;
+    height: 300px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     background-color: plum;
@@ -152,9 +161,10 @@ export const ButtonsQuiz = styled.button`
     }
 `;
 export const LeaderboardContainer = styled.div`
-    height: 80vh;
-    width: 30vw;
-    background-color: purple;
+    height: 75vh;
+    width: 25vw;
+    background-color: ${(props) => props.theme.teal};
+    opacity: 0.8;
     display: flex;
     flex-wrap: wrap;
     margin-left: 20px;
@@ -166,7 +176,6 @@ export const LeaderboardContainer = styled.div`
 export const PlayerScoreContainer = styled.div`
     height: 85%;
     width: 100%;
-    background-color: blue;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;

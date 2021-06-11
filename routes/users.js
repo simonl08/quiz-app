@@ -1,60 +1,52 @@
 import express from "express";
-import bcrypt from "bcryptjs"
-import User from "../models/user.js"
+import bcrypt from "bcryptjs";
+import User from "../models/user.js";
 
 const router = express.Router();
 
 router.post("/login", (req, res) => {
-    const email = req.body.email
-    const password = req.body.password
+    const name = req.body.name;
+    const password = req.body.password;
 
-    User.findOne({ email }).then((user) => {
+    User.findOne({ name }).then((user) => {
         if (!user) {
-            return res.status(404).json({ emailnotfound: "Email not found" })
+            return res.status(404).json({ emailnotfound: "Email not found" });
         }
         bcrypt.compare(password, user.password).then((isMatch) => {
             if (isMatch) {
-                return res 
-                .status(200)
-                .json({success: true})
-                // const payload = { id: user.id, name: user.name }
-                // jwt.sign(payload, keys.secretOrKey, (err, token) => {
-                //     res.json({ success: true, token: "Bearer " + token })
-                // })
+                return res.status(200).json({ success: true });
             } else {
-                return res
-                    .status(400)
-                    .json({ passwordincorrect: "Password incorrect" })
+                return res.status(400).json({ passwordincorrect: "Password incorrect" });
             }
-        })
-    })
-})
+        });
+    });
+});
 
-router.post('/register', async (req, res) => {
-    console.log('at the back end ');
+router.post("/register", async (req, res) => {
+    console.log("at the back end ");
     console.log(req.body);
 
-    User.findOne({ email: req.body.email }).then((user) => {
+    User.findOne({ name: req.body.name }).then((user) => {
         if (user) {
-            return res.status(400).json({ email: "Email already exists" })
+            return res.status(400).json({ name: "Username already exists" });
         } else {
             const newUser = new User({
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password,
-            })
+            });
             bcrypt.genSalt(10, (err, salt) => {
                 bcrypt.hash(newUser.password, salt, (err, hash) => {
-                    if (err) throw err
-                    newUser.password = hash
+                    if (err) throw err;
+                    newUser.password = hash;
                     newUser
                         .save()
                         .then((user) => res.json(user))
-                        .catch((err) => console.log(err))
-                })
-            })
+                        .catch((err) => console.log(err));
+                });
+            });
         }
-    })
+    });
     // const hashedPassword = await bcrypt.hash(req.body.userPassword, 10);
     // const player = await Quizuser.find({ email: req.body.userEmail });
     // const password1 = req.body.userPassword;
