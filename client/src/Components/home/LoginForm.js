@@ -4,28 +4,29 @@ import {
     StyledFormContainer,
     StyledForm,
     MutedLink,
-    BoldLink,
+    BoldText,
     StyledInput,
     StyledButton,
 } from "../../styles/globalStyles";
 
-export default function LoginForm(props) {
+const LoginForm = ({ setUser, switchAnimation }) => {
     const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
     const loginHandler = async (e) => {
         e.preventDefault();
         const body = {
             name: name,
-            email: email,
             password: password,
         };
 
-        await axios.post("/users/login", body);
+        const response = await axios.post("/users/login", body);
+        console.log(response.config.data);
+        console.log(JSON.parse(response.config.data).name);
+        let authUser = JSON.parse(response.config.data).name;
+        setUser(authUser);
 
         setName("");
-        setEmail("");
         setPassword("");
     };
 
@@ -38,21 +39,16 @@ export default function LoginForm(props) {
                     onChange={(e) => setName(e.target.value)}
                 ></StyledInput>
                 <StyledInput
-                    type="email"
-                    placeholder="Email.."
-                    onChange={(e) => setEmail(e.target.value)}
-                ></StyledInput>
-                <StyledInput
                     type="password"
                     placeholder="Password.."
                     onChange={(e) => setPassword(e.target.value)}
                 ></StyledInput>
-                {/* <MutedLink href="#">Forgot password?</MutedLink> */}
+                <StyledButton type="submit">Submit</StyledButton>
             </StyledForm>
-            <StyledButton type="submit">Submit</StyledButton>
             <MutedLink href="#">
-                Don't have an account? <BoldLink onClick={props.switch}>Sign-Up</BoldLink>
+                Don't have an account? <BoldText onClick={switchAnimation}>Sign-Up</BoldText>
             </MutedLink>
         </StyledFormContainer>
     );
-}
+};
+export default LoginForm;

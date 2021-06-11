@@ -10,11 +10,25 @@ import {
     PlayerScore,
     Navbar,
 } from "../styles/globalStyles";
+//images
+import background from "../images/graphic.jpg";
 
-export default function Dashboard() {
+export default function Dashboard({ user, setUser }) {
+    const logoutHandler = () => {
+        setUser("");
+    };
+
     return (
-        <PageContainer>
-            <Navbar>QZapp</Navbar>
+        <PageContainer style={{ backgroundImage: `url(${background})` }}>
+            <Navbar>
+                <h1>QZapp</h1>
+                <div className="user-details">
+                    <h3>Hi, {user}</h3>
+                    <h5 className="logout-btn" onClick={() => logoutHandler()}>
+                        Logout
+                    </h5>
+                </div>
+            </Navbar>
             <DashboardContainer>
                 <ContainerHeader>Question: 1</ContainerHeader>
                 <p>sample question here</p>

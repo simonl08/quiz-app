@@ -4,12 +4,12 @@ import {
     StyledFormContainer,
     StyledForm,
     MutedLink,
-    BoldLink,
+    BoldText,
     StyledInput,
     StyledButton,
 } from "../../styles/globalStyles";
 
-export default function SignUp(props) {
+export default function SignUp({ switchAnimation }) {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -23,7 +23,8 @@ export default function SignUp(props) {
             password: password,
         };
 
-        await axios.post("/users/register", body);
+        const response = await axios.post("/users/register", body);
+        console.log(JSON.parse(response.config.data));
 
         setName("");
         setEmail("");
@@ -47,13 +48,10 @@ export default function SignUp(props) {
                     placeholder="Password.."
                     onChange={(e) => setPassword(e.target.value)}
                 ></StyledInput>
+                <StyledButton type="submit">Submit</StyledButton>
             </StyledForm>
-            <StyledButton type="submit">Submit</StyledButton>
-            <MutedLink href="#">
-                Already have an account?{" "}
-                <BoldLink href="#" onClick={props.switch}>
-                    Login
-                </BoldLink>
+            <MutedLink href="#" onClick={switchAnimation}>
+                Already have an account? <BoldText>Login</BoldText>
             </MutedLink>
         </StyledFormContainer>
     );

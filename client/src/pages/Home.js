@@ -15,12 +15,12 @@ const Container = styled.div`
     background-size: cover;
 `;
 
-export default function Home() {
+export default function Home({ setUser }) {
     return (
         <>
             <Intro />
             <Container style={{ backgroundImage: `url(${background})` }}>
-                <AccountBox />
+                <AccountBox setUser={setUser} />
             </Container>
         </>
     );
