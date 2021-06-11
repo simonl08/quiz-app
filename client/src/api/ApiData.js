@@ -10,6 +10,7 @@ const ApiData = () => {
   const [quiz, setQuiz] = useState([]);
   const [error, setError] = useState(null);
 
+  //called upon re-render and is dependent on data changing -  decoded is called if we have data. 
   useEffect(() => {
     if (data) {
       decoded(data);
@@ -63,7 +64,7 @@ const ApiData = () => {
       answers.push(itemAnswers);
       return setQuiz(answers);
     });
-    console.log(quiz)
+    // console.log(quiz)
   };
 
 
@@ -88,9 +89,10 @@ const ApiData = () => {
 
       {/* show the questions the user has chosen */}
       {quiz && quiz.map((question,idx) => {
+        
       return (
  
-         <QuizDisplay key={idx} question={question} idx={idx} />
+         <QuizDisplay key={idx} question={question} idx={idx}  />
      
       )  
     
